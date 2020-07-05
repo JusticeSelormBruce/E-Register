@@ -32,5 +32,17 @@ class RouteTableSeeder extends Seeder
             'name' => 'Change Password',
             'route' => '/change-password-index'
         ]);
+        Route::create([
+            'name' => 'Classroom',
+            'route' => '/admin/classroom/index'
+        ]);
+        Route::create([
+            'name' => 'Register',
+            'route' => '/admin/register/index'
+        ]);
+        Route::create([
+            'name' => 'Student',
+            'route' => '/admin/student/index'
+        ]);
     }
 }

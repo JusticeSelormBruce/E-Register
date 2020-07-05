@@ -41,3 +41,13 @@ Route::post('reset-password', 'MainController@resetPassword');
 //Change User Password
 Route::get('change-password-index', 'MainController@changePasswordIndex');
 Route::post('change-password', 'MainController@changePassword');
+
+Route::get('/admin/classroom/index','AdminController@classroomIndex');
+Route::get('/admin/register/index','AdminController@registerIndex');
+Route::get('/admin/student/index','AdminController@studentIndex');
+Route::post('create-classroom','AdminController@storeClassDetails');
+Route::post('edit-classroom','AdminController@editClassDetails');
+Route::get('delete-classroom/{id}','AdminController@deleteClassroomDetails')->name('classroom.delete');
+Route::post('/upload-student-list','AdminController@StoreStudentDetails');
+Route::get('view-class-list/{id}','AdminController@classList')->name('class.view');
+
