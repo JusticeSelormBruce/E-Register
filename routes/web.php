@@ -53,4 +53,6 @@ Route::get('delete-classroom/{id}','AdminController@deleteClassroomDetails')->na
 Route::post('/upload-student-list','AdminController@StoreStudentDetails');
 Route::get('view-class-list/{id}','AdminController@classList')->name('class.view');
 Route::get('assign-class-index','LecturerController@assignClassIndex');
+Route::get('mark-register-index/{id}','LecturerController@regiterForm')->name('register.form');
+Route::post('/marrk-register','LecturerController@markRegister');
 

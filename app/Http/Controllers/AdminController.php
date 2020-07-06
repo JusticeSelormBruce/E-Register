@@ -64,13 +64,21 @@ class AdminController extends Controller
     }
     public function classList($id)
     {
-       $studentlist = Student::where('class_id',$id)->get()->all();
-        return view('admin.student.list',compact('studentlist'));
+        $studentlist = Student::where('class_id', $id)->get()->all();
+        return view('admin.student.list', compact('studentlist','id'));
     }
 
     public function registerIndex()
     {
-        $register = Register::all();
-        return view('admin.register.index', compact('register'));
+        if (Auth::user()->klass->classroom_ids != null) {
+            $klass_ids = json_decode('[' . Auth::user()->klass->classroom_ids . ']', true);
+            for ($x = 0; $x <= sizeof($klass_ids[0]) - 1; $x++) {
+                $classes[] = Classroom::whereId($klass_ids[0][$x])->first();
+            }
+        } else {
+            $classes = null;
+        }
+
+        return view('admin.register.index', compact('classes'));
     }
 }

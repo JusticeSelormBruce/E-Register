@@ -15,9 +15,7 @@ class CreateRegistersTable extends Migration
     {
         Schema::create('registers', function (Blueprint $table) {
             $table->id();
-            $table->integer('present')->defasult(0);
-            $table->integer('absent')->defasult(0);
-            $table->integer('permission')->defasult(0);
+            $table->integer('present')->default(0);
             $table->unsignedBigInteger('student_id');
             $table->foreign('student_id')->references('id')->on('students');
             $table->unsignedBigInteger('user_id');
