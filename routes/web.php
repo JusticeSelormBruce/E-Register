@@ -32,6 +32,8 @@ Route::post('admin/assign-privilege', 'MainController@AssignPrivilege');
 Route::post('admin/get-user-roles', 'MainController@getUserRoles')->name('get.user.roles');
 Route::get('admin/user-accounts-index', 'MainController@UserAccountsIndex');
 Route::post('admin/register-user', 'MainController@RegisterUser');
+Route::post('/admin/get-user-classes','LecturerController@getUserclasses');
+Route::post('/admin/assign-classes','LecturerController@Assignclass');
 
 
 //Reset User Password Route Start
@@ -50,4 +52,5 @@ Route::post('edit-classroom','AdminController@editClassDetails');
 Route::get('delete-classroom/{id}','AdminController@deleteClassroomDetails')->name('classroom.delete');
 Route::post('/upload-student-list','AdminController@StoreStudentDetails');
 Route::get('view-class-list/{id}','AdminController@classList')->name('class.view');
+Route::get('assign-class-index','LecturerController@assignClassIndex');
 

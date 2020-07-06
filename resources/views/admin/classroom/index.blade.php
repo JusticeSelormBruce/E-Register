@@ -5,6 +5,7 @@
     <div class="jumbotron-fluid ">
         @include('common.alert')
         <div class="row">
+            <a href="/assign-class-index" class="mx-2 btn btn-sm text-primary"> Assign classes to Lecturer</a>
             <div class="ml-auto">
                 @include('admin.classroom.create')
             </div>

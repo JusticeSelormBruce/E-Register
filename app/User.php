@@ -40,4 +40,8 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class);
     }
+    public function klass()
+    {
+       return $this->hasOne(klass::class);
+    }
 }
