@@ -61,7 +61,7 @@
         <div class="logo">
             <a href="#" class="simple-text">
 
-        <span class="mx-5"> <img src="{{asset('icons/logo-round.PNG')}}" alt="Profile" class="img1 "></span>
+        <span class="mx-5"> <img src="{{asset('icons/avatar.PNG')}}" alt="Profile" class="img1 "></span>
 
             </a>
 

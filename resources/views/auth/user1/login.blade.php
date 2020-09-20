@@ -1,6 +1,3 @@
-@extends('layouts.app')
-
-@section('content')
 <div class="container">
     @include('common.alert')
 
@@ -9,11 +6,11 @@
                
 
                 <div class="jumbotron bg-dark text-light">
-                    <form method="POST" action="{{ route('login') }}">
+                    <form method="POST" action="/user1-auth">
                         @csrf
                         <div class="row">
-                            <label for="">E-Mail Address</label>
-                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+                            <label for="">Phone</label>
+                            <input id="email" type="tel" class="form-control @error('phone') is-invalid @enderror" name="phone" value="{{ old('phone') }}" required autocomplete="phone" autofocus>
 
                             @error('email')
                                 <span class="invalid-feedback" role="alert">
@@ -23,10 +20,10 @@
 
                         </div>
                         <div class="row py-2">
-                            <label for="">Password</label>
-                            <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+                            <label for="">E-Mail Address</label>
+                            <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" required>
 
-                            @error('password')
+                            @error('email')
                                 <span class="invalid-feedback" role="alert">
                                     <strong>{{ $message }}</strong>
                                 </span>
@@ -46,4 +43,3 @@
           </div>
   
 </div>
-@endsection

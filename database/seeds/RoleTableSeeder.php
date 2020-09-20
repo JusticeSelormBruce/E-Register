@@ -14,9 +14,11 @@ class RoleTableSeeder extends Seeder
     {
       Role::create(
           [
-              'routes_ids'=> "[1,2,3,4,5]",
+              'routes_ids'=> "[2,3,4,5]",
               'user_id'=> 1
           ]
       );
+
     }
 }
+

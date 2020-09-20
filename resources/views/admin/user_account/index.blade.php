@@ -25,8 +25,8 @@
                         <th>#</th>
                         <th>Name</th>
                         <th>Email</th>
-                        <th>More Details</th>
-                        <th>actions</th>
+                        {{-- <th>More Details</th>
+                        <th>actions</th> --}}
                     </tr>
                     </thead>
                     <tbody >
@@ -35,12 +35,12 @@
                             <td>{{$user->id}}</td>
                             <td>{{$user->name}}</td>
                             <td><a href="mailto:{{$user->email}}">{{$user->email}}</a></td>
-                            <td>@include('admin.user_account.more')</td>
+                            {{-- <td>@include('admin.user_account.more')</td>
                             <td>
                                 <div class="row">
                                     @include('admin.user_account.edit') <span class="mx-2"></span> @include('admin.user_account.delete')
                                 </div>
-                            </td>
+                            </td> --}}
                         </tr>
                     @endforeach
                     </tbody>

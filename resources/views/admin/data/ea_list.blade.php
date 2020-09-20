@@ -1,8 +1,8 @@
 
 
 <!-- Button trigger modal -->
-<button type="button" class="btn text-primary  btn-sm w-100" data-toggle="modal" data-target="#exampleModalLong">
-    <span class="small mx-3"> Add Student List</span>
+<button type="button" class="btn text-primary  w-100" data-toggle="modal" data-target="#exampleModalLong">
+    <span class="small mx-3"> Add Polling Station List</span>
   </button>
 
   <!-- Modal -->
@@ -17,22 +17,22 @@
               </div>
               <div class="modal-body">
                   <div class="jumbotron">
-                    <form action="/upload-student-list" method="POST" enctype="multipart/form-data">
+                    <form action="/datasheet" method="POST" enctype="multipart/form-data">
                     @csrf
 
                     <div class="form-group input-group-sm">
-                        <label for="name">Class Name*</label>
-                    <select name="class_id" id="" class="form-control" required>
-                        <option value="">Select Classroom</option>
-                        @foreach ($classrooms as $item)
-                        <option value="{{$item->id}}">{{$item->name}}</option>
+                        <label for="name">Polling Station*</label>
+                    <select name="ps_id" id="" class="form-control" required>
+                        <option value="">Select Polling Station</option>
+                        @foreach ($ps as $item)
+                        <option value="{{$item->id}}">{{$item->name}} <span class="mx-2">({{$item->code}})</span></option>
 
                         @endforeach
                     </select>
 
                     </div>
                      <div class="form-group input-group-sm">
-                        <label for="name">Class List (.xcel)</label>
+                        <label for="name">Member List (.xcel)</label>
                         <br>
                      <label for=""> <input type="file" name="file">Upload File</label>
                     </div>

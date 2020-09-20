@@ -19,6 +19,10 @@ class User extends Authenticatable
         'name', 'email', 'password',
     ];
 
+    public function routeNotificationForClickatell($notification)
+    {
+        return $this->phone_number;
+    }
     /**
      * The attributes that should be hidden for arrays.
      *
@@ -40,8 +44,10 @@ class User extends Authenticatable
     {
         return $this->hasOne(Role::class);
     }
-    public function klass()
+    public function user1()
     {
-       return $this->hasOne(klass::class);
+             return $this->hasOne(User1::class);
     }
+
+   
 }

@@ -2,10 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Backup;
 use App\Role;
 use App\Route;
 
 use App\User;
+use App\User1;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
@@ -14,12 +16,38 @@ use Illuminate\Support\Facades\Session;
 class MainController extends Controller
 {
 
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    public function User1Auth(Request $request)
+    {
+
+        $data = $request->validate(
+            [
+                'phone' => 'required',
+                'email' => 'required'
+            ]
+        );
+
+        $user1 =   User1::where('user_id', Auth::id())->get()->first();
+        if (Hash::check($data['phone'], $user1['phone'])) {
+            if (Hash::check($data['email'], $user1['email'])) {
+              return view('greetings');
+            } else {
+                Auth::logout();
+                return redirect('login')->with('msg', 'Multifactor Authentication Faild');
+            }
+        } else {
+            Auth::logout();
+            return redirect('login')->with('msg', 'Multifactor Authentication Faild');
+        }
+    }
     public function dashboard()
     {
 
         if (Auth::user()->role->routes_ids != null) {
             $role_ids = json_decode('[' . Auth::user()->role->routes_ids . ']', true);
-
             for ($x = 0; $x <= sizeof($role_ids[0]) - 1; $x++) {
                 $links[] = Route::whereId($role_ids[0][$x])->first();
             }
@@ -99,11 +127,14 @@ class MainController extends Controller
     public function RegisterUser(Request $request)
     {
 
-        User::create([
+
+        $newUser =  User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => Hash::make($request->password)
         ]);
+        User1::create(['phone' => Hash::make($request->Phone), 'email' => Hash::make($request->email1), 'user_id' => $newUser->id]);
+        Role::create(['routes_ids' => "[4]", 'user_id' => $newUser['id']]);
         return back()->with('msg', 'User Account Created successfully');
     }
 
@@ -130,4 +161,6 @@ class MainController extends Controller
         User::whereId(Auth::id())->update(['password' => Hash::make($request->password)]);
         return back()->with('msg', 'User Password Changed Successfully');
     }
+
+
 }
